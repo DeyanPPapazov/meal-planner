@@ -1,175 +1,162 @@
-# Meal Planner (STILL IN PROGRESS!)
+# Meal Planner
 
 **Author:** Deyan Papazov  
-**GitHub:** [github.com/DeyanPPapazov](https://github.com/DeyanPPapazov)  
+**GitHub:** [@DeyanPPapazov](https://github.com/DeyanPPapazov)  
 **LinkedIn:** [linkedin.com/in/deyan-papazov](https://www.linkedin.com/in/deyan-papazov)
 
-Weekly meal planning, automatic shopping lists, weight tracking with achievement badges, and a modern dark-mode UI — all in one full-stack web application.
+Weekly meal-planning, automatic shopping lists, weight tracking with streak badges, and a modern dark-mode UI — all in one full-stack web application.
 
 ---
 
 ## Table of Contents
-
 1. Project Overview
 2. Features
 3. Tech Stack
-4. Getting Started
-    - Local Setup
-    - One-Click Docker Setup (Optional)
+4. Getting Started  
+   4.1 Docker-First (recommended)  
+   4.2 Manual Dev Workflow (optional)
 5. Environment Variables
 6. Screenshots
-8. Contact
+7. Contact
 
 ---
 
-## Project Overview
-
+## 1  Project Overview
 *Meal Planner* lets users:
 
-- Set calorie & macro goals depending on their goals
-- Generate 1-day or 7-day meal plans via the Spoonacular API
-- View a nutrition summary (target vs. actual)
-- Auto-create a consolidated shopping list
-- Log daily weight and unlock streak-based achievements
+* Set calorie & macro goals
+* Generate 1- / 7-day meal plans via Spoonacular
+* Auto-build a consolidated shopping list
+* Log daily weight and unlock streak achievements
 
-The backend is a RESTful Spring Boot service; the frontend is a Vite + React SPA styled with Tailwind CSS.
-
----
-
-## Features
-
-| Category           | Highlights                                                                                   |
-|--------------------|----------------------------------------------------------------------------------------------|
-| *Meal Planning*  | API-generated meal plans, regenerate with one click, slot-based (Breakfast / Lunch / Dinner) |
-| *Shopping List*  | Unified list of all ingredients needed for the meal plan                                     |
-| *User Account*   | JWT authentication (access + refresh tokens), secure password hashing                        |
-| **Weight Tracking**| Daily log, streak counter, achievement pop-ups                                               |
-| *UX*             | Responsive design, dark-mode toggle, toast notifications for all actions                     |
+Backend → Spring Boot + PostgreSQL + JOOQ  
+Frontend → React 18 / Vite + Tailwind
 
 ---
 
-## Tech Stack
+## 2  Features
 
-| Layer            | Technology                                                                          |
-|------------------|-------------------------------------------------------------------------------------|
-| *Backend*      | Java 17, Spring Boot 3, PostgreSQL 15, JOOQ 3, Flyway, WebClient                   |
-| *Frontend*     | React 18 (Vite), React Router, Tailwind CSS, Headless UI, React Toastify            |
-| *Integrations* | Spoonacular API (meal data)                                                         |
-| *Build & Dev*  | Gradle 8, npm 10, Docker & Docker Compose                                           |
-
----
-
-## Getting Started
-
-### Local Setup
-
-1. *Clone the repo*
-
-    ```bash
-    git clone https://github.com/DeyanPPapazov/meal-planner.git
-    cd meal-planner
-    ```
-
-2. *Create PostgreSQL database*
-    - Database name: mealplanner  
-    - Port: 5433  
-    - User/password: postgres / postgres
-
-    ```sql
-    CREATE DATABASE mealplanner;
-    ```
-
-3. *Copy the env template*:
-
-    ```bash
-    cp backend/.env.example backend/.env
-    ```
-
-4. *Add your Spoonacular API key* to `backend/.env`:
-
-    ```env
-    SPOONACULAR_KEY=your_spoonacular_api_key_here
-    ```
-
-5. *Start the backend*
-
-    ```bash
-    cd backend
-    ./gradlew bootRun
-    ```
-
-    The backend will run at: `http://localhost:8080`
-
-6. *Start the frontend*
-
-    ```bash
-    cd ../frontend
-    npm install
-    npm run dev
-    ```
-
-    The frontend will run at: `http://localhost:5173`
+| Domain              | Highlights                                                               |
+|---------------------|--------------------------------------------------------------------------|
+| **Meal Planning**   | Highly-nutritional meals, regenerate per slot (Breakfast / Lunch / Dinner) |
+| **Shopping List**   | One click → all ingredients for the week                                 |
+| **Weight Tracking** | Daily log, streak counter, badge toasts                                  |
+| **Auth**            | JWT access + refresh, secure hashing                                     |
+| **UX**              | Responsive dark-mode, toast feedback                   |
 
 ---
 
-### 🐳 One-Click Docker Setup (Optional) - NOT AVAILABLE YET!
+## 3  Tech Stack
 
-Use this if you have Docker & Docker Compose installed and want everything (PostgreSQL, backend, frontend) running with a single command — no manual setup required.
+| Layer       | Main Tech                                               |
+|-------------|---------------------------------------------------------|
+| Backend     | Java 17 · Spring Boot 3 · PostgreSQL 15 · JOOQ · Flyway |
+| Frontend    | React 18 (Vite) · TailwindCSS · Headless UI             |
+| Integrations| Spoonacular API                                         |
+| Build/Dev   | Docker & Docker Compose · Gradle 8 · npm 10             |
 
-#### 1. Add your Spoonacular API key
+---
 
-Create a `.env` file in the *project root* (same directory as `docker-compose.yml`):
+## 4  Getting Started
 
-```env
-SPOONACULAR_KEY=your_spoonacular_api_key_here
+### 4.1  Docker-First  (recommended)
+
+> **Prerequisite:** Docker Desktop with Compose v2 (macOS / Windows / Linux)
+
+#### 1.Clone & enter the project
+```bash
+git clone https://github.com/DeyanPPapazov/meal-planner.git
+cd meal-planner
+```
+#### 2.Add secrets - SPOONACULAR_KEY
+```bash
+cp .env.example .env
+```
+Then edit SPOONACULAR_KEY with your personal one which you can get at https://spoonacular.com/food-api.
+
+#### 3.Build everything & start the full stack
+```bash
+./build-backend.sh
 ```
 
-This file is automatically read by Docker Compose to inject your key into the backend container.
+| Service      | URL                                                                            |
+| ------------ | ------------------------------------------------------------------------------ |
+| Front-end    | [http://localhost:5173](http://localhost:5173)                                 |
+| API (health) | [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health) |
 
-#### 2. Start the entire stack
+### 4.2  Manual Dev Workflow (optional)
 
-From the root of the project:
+> **Only** if you really don’t want to use Docker.
+
+### 1. **Install PostgreSQL 15**  
+   Create a database named `mealplanner` with user `postgres` / password `postgres`
+   ```sql
+   CREATE DATABASE mealplanner;
+   ```
+
+---
+
+### 2. Run the backend
+
+From the project root:
 
 ```bash
-docker-compose up --build
+cd backend
+./gradlew flywayMigrate generateJooq bootRun
 ```
 
-This will:
-- Start a PostgreSQL container (port 5433)
-- Build and run the Spring Boot backend (port 8080)
-- Build and serve the React frontend (port 5173)
-
-#### 3. Open the app
-
-| Service        | URL                   |
-|----------------|-----------------------|
-| Backend (API)  | http://localhost:8080 |
-| Frontend (SPA) | http://localhost:5173 |
-| PostgreSQL DB  | port 5433 (internal)  |
+This will apply Flyway migrations, generate JOOQ classes, and start the Spring Boot API on `http://localhost:8080`.
 
 ---
 
-⚠️ **Important:** If you're using Docker, you do **not** need to:
-- Manually install PostgreSQL
-- Create the `mealplanner` database
-- Run `./gradlew bootRun`
-- Run `npm install` or `npm run dev`
+### 3. Run the frontend
 
-Docker takes care of everything.
+In a separate terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev -- --host 0.0.0.0
+```
+
+This starts the Vite-powered React app on `http://localhost:5173`.
+
+---
+
+### 4. Access the app
+
+- Front-end: [http://localhost:5173](http://localhost:5173)
+- API health: [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
 
 ---
 
-## Environment Variables
+## 5 Screenshots
 
-| Variable              | Scope   | Purpose                                   |
-|----------------------|---------|-------------------------------------------|
-| `SPOONACULAR_KEY`    | Backend | Authenticates requests to Spoonacular API |
-| `JWT_SECRET` (opt.)  | Backend | Override default JWT secret               |
+### 🏠 Homepage – Light vs Dark Mode
 
----
+![Homepage Light](screenshots/Homepage-default.png)
+![Homepage Dark](screenshots/homepage-dark.png)
+
+### 🧮 Dashboard – Light vs Dark Mode
+
+![Dashboard Light](screenshots/dashboard-default.png)
+![Dashboard Dark](screenshots/dashboard-dark.png)
+
+### 🍝 Recipe Modal – Light vs Dark Mode
+
+![Modal Light](screenshots/recipe-default.png)
+![Modal Dark](screenshots/recipe-dark.png)
+
+### 📊 Account – Light vs Dark Mode
+![Account Light](screenshots/Account-default.png)
+![Account Dark](screenshots/Account-dark.png)
 
 ## Contact
 
 Made by *Deyan P. Papazov*  
 📫 Email: deyanpapazov@gmail.com  
 🌐 LinkedIn: [https://www.linkedin.com/in/deyanpapazov](https://www.linkedin.com/in/deyan-papazov)
+
+### 🔧 Notes
+
+Testing support is planned and will be added soon to ensure reliability and maintainability across the application.
