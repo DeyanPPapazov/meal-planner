@@ -135,17 +135,17 @@ This starts the Vite-powered React app on `http://localhost:5173`.
 ### 🏠 Homepage – Light vs Dark Mode
 
 ![Homepage Light](screenshots/Homepage-default.png)
-![Homepage Dark](screenshots/homepage-dark.png)
+![Homepage Dark](screenshots/Homepage-dark.png)
 
 ### 🧮 Dashboard – Light vs Dark Mode
 
-![Dashboard Light](screenshots/dashboard-default.png)
-![Dashboard Dark](screenshots/dashboard-dark.png)
+![Dashboard Light](screenshots/Dashboard-default.png)
+![Dashboard Dark](screenshots/Dashboard-dark.png)
 
 ### 🍝 Recipe Modal – Light vs Dark Mode
 
-![Modal Light](screenshots/recipe-default.png)
-![Modal Dark](screenshots/recipe-dark.png)
+![Modal Light](screenshots/Recipe-default.png)
+![Modal Dark](screenshots/Recipe-dark.png)
 
 ### 📊 Account – Light vs Dark Mode
 ![Account Light](screenshots/Account-default.png)
