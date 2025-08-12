@@ -19,7 +19,7 @@ function HomePage() {
 
         <FaBowlFood className="text-5xl text-green-700 dark:text-green-400" />
         <h1 className="text-white dark:text-white text-4xl md:text-5xl font-bold mb-4">
-          Meal Planner 🍽️
+          Meal Planner
         </h1>
         <p className="text-white dark:text-gray-300 text-lg md:text-xl max-w-xl">
           Generate weekly meal plans, track macros, and get shopping lists – all powered by AI.
