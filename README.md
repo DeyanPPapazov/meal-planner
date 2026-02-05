@@ -132,17 +132,17 @@ This starts the Vite-powered React app on `http://localhost:5173`.
 
 ## 5 Screenshots
 
-### 🏠 Homepage – Light vs Dark Mode
+### Homepage – Light vs Dark Mode
 
 ![Homepage Light](screenshots/Homepage-default.png)
 ![Homepage Dark](screenshots/Homepage-dark.png)
 
-### 🧮 Dashboard – Light vs Dark Mode
+### Dashboard – Light vs Dark Mode
 
 ![Dashboard Light](screenshots/Dashboard-default.png)
 ![Dashboard Dark](screenshots/Dashboard-dark.png)
 
-### 🍝 Recipe Modal – Light vs Dark Mode
+### Recipe Modal – Light vs Dark Mode
 
 ![Modal Light](screenshots/Recipe-default.png)
 ![Modal Dark](screenshots/Recipe-dark.png)
@@ -154,9 +154,9 @@ This starts the Vite-powered React app on `http://localhost:5173`.
 ## Contact
 
 Made by *Deyan P. Papazov*  
-📫 Email: deyanpapazov@gmail.com  
-🌐 LinkedIn: [https://www.linkedin.com/in/deyanpapazov](https://www.linkedin.com/in/deyan-papazov)
+Email: deyanpapazov@gmail.com  
+LinkedIn: [https://www.linkedin.com/in/deyanpapazov](https://www.linkedin.com/in/deyan-papazov)
 
-### 🔧 Notes
+### Notes
 
 Testing support is planned and will be added soon to ensure reliability and maintainability across the application.
