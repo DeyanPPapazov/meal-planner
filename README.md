@@ -147,7 +147,7 @@ This starts the Vite-powered React app on `http://localhost:5173`.
 ![Modal Light](screenshots/Recipe-default.png)
 ![Modal Dark](screenshots/Recipe-dark.png)
 
-### 📊 Account – Light vs Dark Mode
+### Account – Light vs Dark Mode
 ![Account Light](screenshots/Account-default.png)
 ![Account Dark](screenshots/Account-dark.png)
 
